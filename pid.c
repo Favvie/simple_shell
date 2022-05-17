@@ -1,29 +1,23 @@
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
+int main()
+{
+    char *command = NULL;
+    size_t command_len = 0;
+    ssize_t n_bytes = 0;
+    printf("$ ");
 
-int main(){
-    char str[] = "Favour Precious";
-    int size_int = strlen(str);
-    char delim[] = " ";
+    getline(&command, &command_len, stdin);
+    command[n_bytes - 1] = '\0';
 
-    char *ptr = strtok(str, delim);
-    
+    char *argv[] = {NULL, NULL};
+    argv[0] = command;
 
-    while (ptr != NULL)
-    {
-
-        
-        for (int i = 0; i < strlen(ptr); i++)
-        {
-            printf("%c",*ptr);
-        }
-        ptr++
-        printf("%li", strlen(ptr));
-        ptr = strtok(NULL, delim);
-    }
-    printf("\n");
+    if (execve(*argv, argv, NULL) == -1)
+	{
+		perror("Error: ");
+	}
     return (0);
 }
-
-
-
+    
