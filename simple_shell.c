@@ -5,13 +5,20 @@
 #include <sys/wait.h>
 #include "main.h"
 
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+
 int main(void)
 {
 
-	char *argv[] = {NULL, NULL};
+	char **argv = NULL;
 	char *command_str;
 
-	while(1)
+	while (1)
 	{
 		printf("($) ");
 
@@ -19,11 +26,11 @@ int main(void)
 		command_str = enter_command();
 
 		/*break command from terminal into array*/
-		turn_to_args(command_str);
-/*		args = turn_to_args(command_str);*/
-		
+		/* turn_to_args(command_str);*/
+		/*argv = turn_to_args(command_str);*/
+
 		/*store the value gotten from terminal in the first index of the array*/
-/*		argv[0] = command_str;
+		/* argv[0] = command_str;*/
 
 		if (fork() == 0)
 		{
@@ -31,9 +38,13 @@ int main(void)
 			{
 				perror(argv[0]);
 			}
-			exit(1);
-		} else wait(NULL);
-*/
+			exit(0);
+		}
+		else
+		{
+			wait(NULL);
+		}
+
 	}
 	return (0);
 }
