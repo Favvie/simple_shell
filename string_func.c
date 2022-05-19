@@ -1,15 +1,15 @@
 #include "main.h"
 /**
- * _strcpy - Copie Source To Destination Char
+ * _strcpy - Compile Source To Destination Char
  * @dest:Destination
  * @src:Source
  * Return: Copie Of Char *
  */
 char *_strcpy(char *dest, char *src)
 {
-int i;
+	int i;
 
-i = 0;
+	i = 0;
 	while (src[i])
 	{
 		dest[i] = src[i];
