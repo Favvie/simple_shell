@@ -1,21 +1,4 @@
 #include "main.h"
-/**
- * check_delim - Checks If A Character Match Any Char *
- * @c: Character To Check
- * @str: String To Check
- * Return: 1 Succes, 0 Failed
- */
-unsigned int check_delim(char c, const char *str)
-{
-	unsigned int i;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (c == str[i])
-			return (1);
-	}
-	return (0);
-}
 
 /**
  * _strtok - Token A String Into Token (strtrok)
@@ -36,7 +19,7 @@ char *_strtok(char *str, const char *delim)
 		return (NULL);
 	for (i = 0; ts[i] != '\0'; i++)
 	{
-		if (check_delim(ts[i], delim) == 0)
+		if (check_delimiter(ts[i], delim) == 0)
 			break;
 	}
 	if (nt[i] == '\0' || nt[i] == '#')
@@ -48,7 +31,7 @@ char *_strtok(char *str, const char *delim)
 	nt = ts;
 	for (i = 0; nt[i] != '\0'; i++)
 	{
-		if (check_delim(nt[i], delim) == 1)
+		if (check_delimiter(nt[i], delim) == 1)
 			break;
 	}
 	if (nt[i] == '\0')
